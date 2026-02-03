@@ -1,0 +1,251 @@
+/* Social Icons */
+/* Resize the social icons on the about page */
+.contact-icons a i,
+.contact-icons a svg {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;   /* works for font icons */
+  line-height: 1;
+  margin-top: 0 !important;
+}
+
+/* For profile picture */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.profile-wrapper .social {
+  margin-top: 0.25rem !important;   /* try 0, 0.15rem, 0.25rem */
+}
+.profile-wrapper .contact-icons {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.profile {
+  float: none;
+  max-width: 420px;
+}
+
+/* Center profile block */
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Ensure the figure output is centered */
+.profile-image {
+  display: flex;
+  justify-content: center;
+}
+
+/* Remove any default margins under the figure so icons sit closer */
+/* .profile-image figure,
+.profile-image img {
+  margin-bottom: 0;
+} */
+
+
+/* For "paper" region of each page */
+/* For about page */
+.about-wrap {
+  position: relative;
+}
+
+/* The paper itself */
+.about-paper {
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  /* where the paper begins relative to the top of about-wrap */
+  top: 150px;           /* <-- adjust this to be "middle of photo" */
+
+  bottom: 0;            /* extends to end of content */
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.20);
+  z-index: 0;
+  padding: 1.5rem 0rem;
+}
+
+/* Ensure actual content renders above the paper */
+.profile-wrapper,
+.about-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Padding inside the paper for the body text */
+.about-content {
+  padding: 2rem 1.75rem 2rem 1.75rem;
+  margin-top: 1rem;
+}
+
+/* Title styling */
+.about-title {
+  margin: 0.35rem 0 0.25rem 0;
+  font-weight: 700;
+  color: var(--global-section-head-color);
+}
+
+/* Center and tighten social icons row */
+.about-social {
+  margin-top: 0;
+}
+
+.about-social .contact-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: -0.15rem;
+  padding: 0;
+}
+
+
+
+
+/* Headings on dark background / paper layout */
+.section-title {
+  text-align: center;
+  margin-top: 0;
+}
+
+.section-title-link {
+  color: #580000;          /* <-- change to whatever you want */
+  text-decoration: none;
+}
+
+.section-title-link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/* Navbar customizations */
+/* Navbar background */
+#navbar {
+  background-color: #580000 !important;   /* your navbar color */
+}
+
+/* Brand text (your name/title) */
+#navbar .navbar-brand {
+  color: #fff !important;
+}
+
+/* Nav links */
+#navbar .nav-link {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+/* Hover */
+#navbar .nav-link:hover {
+  color: #fff !important;
+}
+
+/* Active tab */
+#navbar .nav-item.active .nav-link,
+#navbar .nav-link.active {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* Dropdown menu (if you use it) */
+#navbar .dropdown-menu {
+  background-color: #111 !important;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+#navbar .dropdown-item {
+  color: rgba(255,255,255,0.85) !important;
+}
+#navbar .dropdown-item:hover,
+#navbar .dropdown-item:focus {
+  background-color: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+}
+
+
+/* Two-column layout */
+.about-layout{
+  display: grid;
+  grid-template-columns: 56px 1fr; /* left nav + content */
+  column-gap: 24px;
+  align-items: start;
+}
+
+/* Sticky sidenav */
+.about-sidenav{
+  position: sticky;
+  top: 110px;           /* adjust depending on your fixed navbar height */
+  height: calc(100vh - 140px);
+}
+
+/* Timeline nav container */
+.timeline-nav{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Thin vertical line */
+.timeline-nav::before{
+  content: "";
+  position: absolute;
+  left: 14px;           /* centers behind the dots */
+  top: 10px;
+  bottom: 10px;
+  width: 2px;           /* thin line */
+  background: rgba(255,255,255,0.35);
+  border-radius: 2px;
+}
+
+/* Each dot item spacing */
+.timeline-nav li{
+  position: relative;
+  margin: 18px 0;
+  height: 40px;
+}
+
+/* The dot itself */
+.timeline-nav .dot{
+  display: inline-flex;
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  background: #ffffff;                 /* white bullet */
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;                          /* above the line */
+  text-decoration: none;
+}
+
+/* Hover state */
+.timeline-nav .dot:hover{
+  transform: scale(1.06); 
+}
+
+/* Spacing between your sections */
+.about-section{
+  margin-bottom: 2rem;
+}
+
+/* Mobile: hide sidenav or move it */
+@media (max-width: 768px){
+  .about-layout{
+    grid-template-columns: 1fr;
+  }
+  .about-sidenav{
+    display: none;
+  }
+}

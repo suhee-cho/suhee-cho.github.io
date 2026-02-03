@@ -14,6 +14,9 @@
 {% if site.footer_fixed %}
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
+      <div class="social">
+        <div class="contact-icons">{% social_links %}</div>
+      </div>
       {{ footer_contents }}
     </div>
   </footer>
@@ -22,9 +25,12 @@
     {% if site.newsletter.enabled %}
       {% include newsletter.liquid %}
     {% endif %}
-
     <div class="container">
+      <div class="social">
+        <div class="contact-icons">{% social_links %}</div>
+      </div>
       {{ footer_contents }}
     </div>
   </footer>
 {% endif %}
+

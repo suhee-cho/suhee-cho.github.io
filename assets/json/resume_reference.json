@@ -6,7 +6,7 @@
     "email": "suheecho@stanford.edu",
     "phone": "(650) 643-7719",
     "url": "https://suhee-cho.github.io/",
-    "summary": "A computational neuroscientist passionate in studying how we learn and adapt to changing environments. Currently a social science researcher at Stanford University, advised by Prof. Jay L. McClelland. My current research focuses on bulding computational models underlying the cognitive map, embracing their biologically-plausible mechanism and application to adaptive decision making.",
+    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
     "location": {
       "address": "450 Jane Stanford Way",
       "postalCode": "CA 94305",
@@ -14,17 +14,26 @@
       "countryCode": "US",
       "region": "California"
     }
+    ,
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "AlbertEinstein",
+        "url": "https://twitter.com/AlbertEinstein"
+      }
+    ]
   },
   "education": [
     {
       "institution": "Korea Advanced Institue of Science and Technology (KAIST)",
       "location": "Daejeon, South Korea",
       "url": "https://www.kaist.ac.kr/",
-      "area": "Double major in Bio & Brain Engineering / Biological Sciences",
+      "area": "Bio & Brain Engineering",
       "studyType": "Bachelor of Science",
       "startDate": "2019-02-18",
       "endDate": "2024-02-17",
       "score": "4.09/4.30 GPA",
+      "courses": ["Computational Neuroscience", "Cognitive Science", "Machine Learning", "Data Structures", "Algorithms"]
     }
   ],
   "work": [
@@ -53,11 +62,55 @@
   
   "awards": [
     {
-      "title": "Korea Foundation for Advanced Studies Overseas PhD Scholarship",
+      "title": "Nobel Prize in Physics",
       "date": "1921-11-01",
       "awarder": "Royal Swedish Academy of Sciences",
       "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
       "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Machine Learning",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-location-dot"
+    },
+    {
+      "name": "Quantum Computing",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-tag"
+    },
+    {
+      "name": "Quantum Information",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-envelope"
+    },
+    {
+      "name": "Quantum Cryptography",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-hashtag"
+    },
+    {
+      "name": "Quantum Communication",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-calendar"
+    },
+    {
+      "name": "Quantum Teleportation",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-clipboard-check"
     }
   ],
   "publications": [
@@ -122,6 +175,18 @@
         "Quantum Communication",
         "Quantum Teleportation"
       ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    },
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-thumbtack",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
     }
   ],
   "projects": [

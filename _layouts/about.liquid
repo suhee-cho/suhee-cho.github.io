@@ -93,27 +93,21 @@ layout: default
 
         {% if page.announcements and page.announcements.enabled %}
           <section id="about-news" class="about-section">
-            <h2 class="section-title">
-              <a href="{{ '/news/' | relative_url }}" class="section-title-link">News :loudspeaker:</a>
-            </h2>
+            <a href="{{ '/blog/' | relative_url }}" class="link"><h2 class="section-title">News :loudspeaker:</h2></a>
             {% include news.liquid limit=true %}
           </section>
         {% endif %}
 
         {% if page.latest_posts and page.latest_posts.enabled %}
           <section id="about-posts" class="about-section">
-            <h2 class="section-title">
-              <a href="{{ '/blog/' | relative_url }}" class="section-title-link">Blog Posts :pencil:</a>
-            </h2>
-            {% include latest_posts.liquid %}
+            <a href="{{ '/blog/' | relative_url }}" class="link"><h2 class="section-title">Blog Posts :pencil:</h2></a>
+              {% include latest_posts.liquid %}
           </section>
         {% endif %}
 
         {% if page.selected_papers %}
           <section id="about-pubs" class="about-section">
-            <h2 class="section-title">
-              <a href="{{ '/publications/' | relative_url }}" class="section-title-link">Publications :brain:</a>
-            </h2>
+            <h2 class="section-title">Publications :brain:</h2>
             {% include selected_papers.liquid %}
           </section>
         {% endif %}

@@ -58,3 +58,44 @@ $(document).ready(function () {
     trigger: "hover",
   });
 });
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".abstract-toggle");
+  if (!btn) return;
+
+  const entry = btn.closest(".publication-entry");
+  if (!entry) return;
+
+  const abs = entry.querySelector(".abstract-text");
+  if (!abs) return;
+
+  const caret = btn.querySelector(".abstract-caret");
+
+  const isHidden = abs.hasAttribute("hidden");
+  if (isHidden) {
+    abs.removeAttribute("hidden");
+    btn.setAttribute("aria-expanded", "true");
+    if (caret) {
+      caret.classList.remove("fa-angle-down");
+      caret.classList.add("fa-angle-up");
+    }
+  } else {
+    abs.setAttribute("hidden", "");
+    btn.setAttribute("aria-expanded", "false");
+    if (caret) {
+      caret.classList.remove("fa-angle-up");
+      caret.classList.add("fa-angle-down");
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Make CV / PDF links in social icons open in a new tab
+  document.querySelectorAll(".contact-icons a").forEach((a) => {
+    const href = (a.getAttribute("href") || "").toLowerCase();
+    if (href.endsWith(".pdf") || href.includes("/assets/pdf/")) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener noreferrer");
+    }
+  });
+});

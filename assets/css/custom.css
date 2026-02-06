@@ -28,9 +28,6 @@
 }
 
 /* Center profile block */
-.profile-wrapper {
-  
-}
 
 /* Ensure the figure output is centered */
 .profile-image {
@@ -70,7 +67,7 @@
   margin: auto;  /* auto centers */
 
   /* symmetric padding (no left bias) */
-  padding: 2rem 1.25rem 10rem 1.25rem;
+  padding: 2rem 1.25rem 6rem 1.25rem;
 
   display: flex;
   flex-direction: column;
@@ -87,15 +84,12 @@
   margin: auto;  /* auto centers */
 
   /* symmetric padding (no left bias) */
-  padding: 10rem 1.25rem 10rem 1.25rem;
-
+  padding: 15rem 1.25rem 5rem 1.25rem;
   text-align: center;
-
-  
 }
 
 /* Add a thin vertical line ONLY between sections */
-.about-section + .about-section::before {
+.about-section::before {
   content: "";
   position: absolute;
 
@@ -104,8 +98,8 @@
   transform: translateX(-50%);
 
   /* line height spans the gap above this section */
-  top: -4.5rem;              /* start in the gap */
-  height: 9rem;            /* how long the vertical divider is */
+  top: -1rem;              /* start in the gap */
+  height: 10rem;            /* how long the vertical divider is */
 
   width: 2px;
   background: rgba(0,0,0,0.18);  /* thin gray */
@@ -148,22 +142,91 @@
   z-index: 1;
 }
 
-.section-title-link {
-  color: #580000;          /* <-- change to whatever you want */
-  text-decoration: none;
-}
-
-.section-title-link:hover {
+.section-title:hover {
   text-decoration: underline;
 }
 
 
+.more-link {
+  color: #000000;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.more-link::before {
+    z-index: 1;
+  content: "";
+  display: block;
+  margin: auto;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.25);
+  box-shadow:
+    -14px 0 0 rgba(0,0,0,0.25),
+     14px 0 0 rgba(0,0,0,0.25);
+}
+
+.more-link:hover {
+  text-decoration: underline;
+}
+
+
+.publication-entry{
+    position: relative;
+  z-index: 1;
+
+  /* center the whole section block */
+  margin: auto;  /* auto centers */
+
+  /* symmetric padding (no left bias) */
+  padding: 0rem 1.25rem 1rem 1.25rem;
+
+  text-align: center;
+}
+
+/* three dots between consecutive publication entries 
+.publication-entry + .publication-entry::before {
+    z-index: 1;
+  content: "";
+  display: block;
+  margin: 1.25rem auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.25);
+  box-shadow:
+    -14px 0 0 rgba(0,0,0,0.25),
+     14px 0 0 rgba(0,0,0,0.25);
+     outline: 1px solid blue;
+}
+*/
+
+.abstract-text{
+    margin-top: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(0,0,0,0.75);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  
+}
 
 
 /* Navbar customizations */
 /* Navbar background */
 #navbar {
   background-color: #580000 !important;   /* your navbar color */
+}
+
+.navi-mark{
+  width: 27px;              /* adjust */
+  height: 27px;
+  margin-right: 5px;
 }
 
 /* Brand text (your name/title) */
@@ -312,8 +375,78 @@
   }
 }
 
-/* Center and tighten social icons row */
-.footer-social {
-  /* margin-top: -40px; */
-  color: rgba(255, 255, 255, 0.95);
+/*
+footer.fixed-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem 1.25rem;  reduce padding; 3rem can push things weird 
+}*/
+
+/* Target BOTH footer variants in your liquid: fixed-bottom and sticky-bottom */
+footer.fixed-bottom,
+footer.sticky-bottom {
+  width: 100%;
+  text-align: center;
+}
+
+/* Center blocks */
+.footer-social,
+.footer-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Stack note + copyright */
+.footer-content {
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.95) !important; /* keep visible */
+}
+
+footer .footer-social{
+  flex-direction: column;   /* stack image above icons */
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+footer .footer-mark{
+  width: 75px;              /* adjust */
+  height: 75px;
+  display: block;
+}
+
+/* Social icons row */
+.footer-social .contact-icons {
+  display: flex;              /* needed for gap to work */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Footer icons: make sure links have a visible color */
+.footer-social .contact-icons a {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  color: rgba(255, 255, 255, 0.95) !important; /* keep visible */
+}
+
+.footer-social .contact-icons a:hover,
+.footer-social .contact-icons a:focus {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+
+.footer-social .contact-icons a i,
+.footer-social .contact-icons a svg {
+  color: currentColor !important;
+  fill: currentColor !important;
+  stroke: currentColor !important; /* in case icons use strokes */
 }

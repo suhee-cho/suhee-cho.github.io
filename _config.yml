@@ -50,7 +50,7 @@ external_services:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: false
-footer_fixed: true
+footer_fixed: false
 search_enabled: true
 socials_in_search: false
 posts_in_search: true
@@ -89,8 +89,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Suhee's blog # blog_name will be displayed in your blog page
-blog_description: Some thoughts about research and life. # blog_description will be displayed in your blog page
+blog_name: Blog # blog_name will be displayed in your blog page
+blog_description: Random thoughts about research and life # blog_description will be displayed in your blog page
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -99,7 +99,7 @@ pagination:
   enabled: true
 
 related_blog_posts:
-  enabled: true
+  enabled: false
   max_related: 5
 
 # Giscus comments (RECOMMENDED)

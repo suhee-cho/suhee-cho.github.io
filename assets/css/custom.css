@@ -1,4 +1,16 @@
 
+::selection {
+  background-color: rgb(153, 190, 228); /* The color of the highlight background */
+  /*color: black;  The color of the text when highlighted */
+}
+
+/* For Firefox compatibility */
+::-moz-selection {
+  background-color: rgb(153, 190, 228);
+  /*color: black;*/
+}
+
+
 /* Social Icons */
 /* Resize the social icons on the about page */
 .contact-icons a i,
@@ -310,6 +322,7 @@
   width: var(--line);
   background: rgba(255,255,255,0.35);
   border-radius: 999px;
+  Z-index: 1;
 }
 
 /* no margins needed at all */
@@ -449,4 +462,116 @@ footer .footer-mark{
   color: currentColor !important;
   fill: currentColor !important;
   stroke: currentColor !important; /* in case icons use strokes */
+}
+
+
+
+/* Hero area on dark background */
+.post .blog-hero {
+  text-align: center;
+  margin: 0 auto 1.5rem auto;
+  padding-top: 1.25rem;   /* bring it away from navbar a bit */
+}
+
+.post .page-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 6rem;
+  color: rgba(255,255,255,0.95);
+}
+
+.post .page-description {
+  margin: 0.35rem 0 0 0;
+  color: rgba(255,255,255,0.80);
+  font-size: 2rem;
+}
+
+/* White paper container centered and ~60% width */
+.post .page-paper {
+  width: 100%;
+  max-width: 900px;     /* prevents it getting too wide on large screens */
+  margin: 0 auto 3rem auto;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.20);
+  padding: 1.5rem 1.5rem;
+}
+
+/* Mobile: make paper wider */
+@media (max-width: 900px) {
+  .blog-page .page-paper {
+    width: 92%;
+  }
+}
+
+.tag-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem auto 0.5rem auto;
+  text-align: center;
+}
+.tag-list a{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.keywords-title{
+  font-weight: 500;
+}
+
+.keywords-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #fff !important;
+}
+
+.keywords-item{
+  display: flex;
+  align-items: center;
+}
+
+/* add slash ONLY before items after the first */
+.keywords-item + .keywords-item::before{
+  content: "/";
+  margin-right: 1rem;     /* match gap */
+  color: #fff; /* adjust */
+}
+
+/* keep icon and text aligned */
+.keywords-item a{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+a.black-red-button{
+  color: #000 !important;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+
+  display: inline-flex;           /* helps align icon + text */
+  align-items: center;
+  gap: 0.35rem;
+}
+
+a.black-red-button:visited {
+  color: #000 !important;
+}
+a.black-red-button:hover,
+a.black-red-button:focus {
+  color: #580000 !important;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
 }

@@ -35,13 +35,13 @@ pagination:
 {% if site.display_tags and site.display_tags.size > 0 %}
 
   <div class="tag-list">
-    <p class="keywords-title" style="color: #fff;">Keywords :open_file_folder:</p>
+    <p class="keywords-title" style="color: #fff;">Keywords</p>
 
     <ul class="keywords-list">
       {% if tags != "" %}
         {% for tag in site.display_tags %}
           <li class="keywords-item">
-            <a class="tag-label" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+            <a class="tag-label" style="color: #fff;" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
               <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
             </a>
           </li>
@@ -62,84 +62,43 @@ pagination:
 
     {% for post in postlist %}
 
-    {% if post.external_source == blank %}
-      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
-    {% else %}
-      {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
-    {% endif %}
-    {% assign year = post.date | date: "%Y" %}
-    {% assign tags = post.tags | join: "" %}
-    {% assign categories = post.categories | join: "" %}
-
-    <li>
-      {% if post.thumbnail %}
-        <div class="row">
-        <div class="col-sm-9">
+      {% if post.external_source == blank %}
+        {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
+      {% else %}
+        {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
       {% endif %}
-      <h3>
-        {% if post.redirect == blank %}
+      {% assign year = post.date | date: "%Y" %}
+      {% assign tags = post.tags | join: "" %}
+
+      <li>
+        <h3>
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        {% elsif post.redirect contains '://' %}
-          <a class="post-title" href="{{ post.redirect }}" target="_blank">{{ post.title }}</a>
-          <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        {% else %}
-          <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
-        {% endif %}
-      </h3>
-      <p style="color: #000">{{ post.description }}</p>
-      <p class="post-meta" style="color: #000">
-        {{ read_time }} min read &nbsp; &middot; &nbsp;
-        {{ post.date | date: '%B %d, %Y' }}
-        {% if post.external_source %}
-        &nbsp; &middot; &nbsp; {{ post.external_source }}
-        {% endif %}
-      </p>
-      <p class="post-tags">
-        <a class="black-red-button" href="{{ year | prepend: '/blog/' | relative_url }}">
-          <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
+        </h3>
+        <p style="color: #000">{{ post.description }}</p>
+        <p class="post-meta" style="color: #000">
+          {{ read_time }} min read &nbsp; &middot; &nbsp;
+          {{ post.date | date: '%B %d, %Y' }}
+          {% if post.external_source %}
+            &nbsp; &middot; &nbsp; {{ post.external_source }}
+          {% endif %}
           {% if tags != "" %}
-          &nbsp; &middot; &nbsp;
+            &nbsp; &middot; &nbsp;
             {% for tag in post.tags %}
-            <a class="black-red-button" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+              <a class="black-red-button" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
               <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
               {% unless forloop.last %}
                 &nbsp;
               {% endunless %}
             {% endfor %}
           {% endif %}
-
-          {% if categories != "" %}
-          &nbsp; &middot; &nbsp;
-            {% for category in post.categories %}
-            <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
-              <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
-              {% unless forloop.last %}
-                &nbsp;
-              {% endunless %}
-            {% endfor %}
-          {% endif %}
-    </p>
-
-{% if post.thumbnail %}
-
-</div>
-
-  <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
-  </div>
-</div>
-{% endif %}
-    </li>
-
+        </p>
+      </li>
     {% endfor %}
-
   </ul>
 
-{% if page.pagination.enabled %}
-{% include pagination.liquid %}
-{% endif %}
+  {% if page.pagination.enabled %}
+    {% include pagination.liquid %}
+  {% endif %}
 
 </div>
 </div>

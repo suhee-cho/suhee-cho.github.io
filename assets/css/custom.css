@@ -1,14 +1,50 @@
 
 ::selection {
-  background-color: rgb(153, 190, 228); /* The color of the highlight background */
+  background-color: rgba(143, 186, 229, 0.7); /* The color of the highlight background */
   /*color: black;  The color of the text when highlighted */
 }
 
 /* For Firefox compatibility */
 ::-moz-selection {
-  background-color: rgb(153, 190, 228);
+  background-color: rgba(143, 186, 229, 0.7);
   /*color: black;*/
 }
+
+
+
+
+/* Base animation */
+/* Before JS marks the page ready, keep stagger items hidden */
+body:not(.page-loaded) .stagger{
+  opacity: 0 !important;
+  transform: translateY(2rem) !important;
+}
+
+/* After load: animate in */
+body.page-loaded .stagger{
+  animation: fadeUp 1000ms ease forwards !important;
+  will-change: opacity, transform;
+}
+
+body.page-loaded .s-1{ animation-delay: 1000ms; }
+body.page-loaded .s-2{ animation-delay: 2000ms; }
+body.page-loaded .s-3{ animation-delay: 3000ms; }
+
+@keyframes fadeUp{
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced motion 
+@media (prefers-reduced-motion: reduce) {
+  body:not(.page-loaded) .stagger {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  body.page-loaded .stagger {
+    animation: none !important;
+  }
+}
+*/
 
 
 /* Social Icons */
@@ -217,7 +253,7 @@
 */
 
 .abstract-text{
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
   padding: 0;
   border: 0;
   background: transparent;
@@ -264,20 +300,6 @@
   font-weight: 600;
 }
 
-/* Dropdown menu (if you use it) 
-#navbar .dropdown-menu {
-  background-color: #111 !important;
-  border: 1px solid rgba(255,255,255,0.10);
-}
-#navbar .dropdown-item {
-  color: rgba(255,255,255,0.85) !important;
-}
-#navbar .dropdown-item:hover,
-#navbar .dropdown-item:focus {
-  background-color: rgba(255,255,255,0.08) !important;
-  color: #fff !important;
-}
-*/
 
 /* Two-column layout */
 .about-layout{
@@ -363,6 +385,8 @@
   white-space: nowrap;
   color: rgba(255, 255, 255, 0.35);
   font-size: 20px;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
 }
 
 /* Hover: scale BOTH dot and label, and brighten */
@@ -373,10 +397,9 @@
 .timeline-link:hover .timeline-label {
   transform: scale(1.06);
   color: rgba(255, 255, 255, 0.95);
+  text-decoration: none !important;
+  border-bottom: 0 !important;
 }
-
-
-
 
 /* Mobile: hide sidenav or move it */
 @media (max-width: 768px){
@@ -469,8 +492,8 @@ footer .footer-mark{
 /* Hero area on dark background */
 .post .blog-hero {
   text-align: center;
-  margin: 0 auto 1.5rem auto;
-  padding-top: 1.25rem;   /* bring it away from navbar a bit */
+  margin: 0 auto 2rem auto;
+  padding-top: 7.5rem;   /* bring it away from navbar a bit */
 }
 
 .post .page-title {
@@ -487,15 +510,17 @@ footer .footer-mark{
 }
 
 /* White paper container centered and ~60% width */
+
 .post .page-paper {
+  position: relative;
   width: 100%;
   max-width: 900px;     /* prevents it getting too wide on large screens */
-  margin: 0 auto 3rem auto;
+  margin: 0rem auto 3rem auto;
   background: #fff;
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
   box-shadow: 0 8px 28px rgba(0,0,0,0.20);
-  padding: 1.5rem 1.5rem;
+  padding: 0 1.5rem 0 1.5rem;
 }
 
 /* Mobile: make paper wider */
@@ -505,14 +530,92 @@ footer .footer-mark{
   }
 }
 
+.post .post-header {
+  align-items: center;
+  text-align: center;
+  margin: 3rem auto;
+  color: #fff;
+}
+
+.post .post-header::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,0.18);
+}
+
+.post .post-content {
+  padding: 3rem 1.5rem 4rem 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.post .post-title{
+  font-weight: 500;
+}
+
+.post .post-meta {
+  /* margin-top: 0.25rem; */
+  color: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Three-dot divider */
+.post .dots-divider{
+  display: block;
+  text-align: center;
+  margin: 4rem auto;
+  line-height: 0;
+}
+
+/* center dot */
+.post .dots-divider::before{
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.35);
+
+  /* create left + right dots */
+  box-shadow:
+    -20px 0 0 rgba(0,0,0,0.35),
+     20px 0 0 rgba(0,0,0,0.35);
+}
+
+
+/* 1) Kill any existing dividers the theme applies */
+.post-list > li{
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background: transparent;
+  margin-bottom: -0.75rem;
+}
+
+/* Some themes use pseudo-elements for dividers */
+.post-list > li::before,
+.post-list > li::after{
+  content: none !important;
+}
+
+/* 2) Add ONLY our divider between posts */
+.post-list > li + li{
+  border-top: 1px solid rgba(0,0,0,0.18) !important;
+  margin-top: 1rem;
+  /* padding-top: 1.25rem; */
+}
+
+
 .tag-list{
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   list-style: none;
   padding: 0;
-  margin: 0.5rem auto 0.5rem auto;
+  margin: 0.25rem 0.5rem 25rem 0.5rem;
   text-align: center;
 }
 .tag-list a{
@@ -521,8 +624,28 @@ footer .footer-mark{
   text-decoration: none;
 }
 
+.tag-list::after {
+  content: "";
+  position: absolute;
+
+  /* line position (choose where it sits) */
+  left: 50%;                  /* center between sections */
+  transform: translateX(-50%);
+
+  /* line height spans the gap above this section */
+  top: 10rem;              /* start in the gap */
+  height: 15rem;            /* how long the vertical divider is */
+
+  width: 2px;
+  background: rgba(255, 255, 255, 0.7);  /* thin gray */
+  border-radius: 999px;
+
+  z-index: 1;
+}
+
 .keywords-title{
   font-weight: 500;
+  font-size: 1.5rem;
 }
 
 .keywords-list{
@@ -533,19 +656,19 @@ footer .footer-mark{
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #fff !important;
 }
 
 .keywords-item{
   display: flex;
   align-items: center;
+  color: #fff;
 }
 
 /* add slash ONLY before items after the first */
 .keywords-item + .keywords-item::before{
   content: "/";
   margin-right: 1rem;     /* match gap */
-  color: #fff; /* adjust */
+  color:rgba(255, 255, 255, 0.7); /* adjust */
 }
 
 /* keep icon and text aligned */

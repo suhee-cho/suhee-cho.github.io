@@ -23,26 +23,26 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "post-a-post-with-plotly-js",
+        },{id: "post-prologue",
         
-          title: "a post with plotly.js",
+          title: "Prologue",
         
-        description: "this is what included plotly.js code could look like",
+        description: "Along with the thought from thoughts to language",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/plotly/";
+            window.location.href = "/blog/2026/prologue/";
           
         },
-      },{id: "post-a-post-with-image-galleries",
+      },{id: "post-between-idealism-and-reality",
         
-          title: "a post with image galleries",
+          title: "Between Idealism and Reality",
         
-        description: "this is what included image galleries could look like",
+        description: "My Journey in Academia",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/photo-gallery/";
+            window.location.href = "/blog/2024/idealism/";
           
         },
       },{id: "books-the-godfather",

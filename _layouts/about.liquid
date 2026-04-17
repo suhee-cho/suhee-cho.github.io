@@ -90,7 +90,7 @@ layout: default
 
         {% if page.announcements and page.announcements.enabled %}
           <section id="about-news" class="about-section">
-            <a href="{{ '/blog/' | relative_url }}" class="link"><h2 class="section-title">News :loudspeaker:</h2></a>
+            <a href="{{ '/news/' | relative_url }}" class="link"><h2 class="section-title">News :loudspeaker:</h2></a>
             {% include news.liquid limit=true %}
           </section>
         {% endif %}

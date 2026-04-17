@@ -51,7 +51,7 @@ external_services:
 
 navbar_fixed: false
 footer_fixed: false
-search_enabled: true
+search_enabled: false
 socials_in_search: false
 posts_in_search: true
 bib_search: true
@@ -89,10 +89,10 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Blog # blog_name will be displayed in your blog page
-blog_description: Random miscellaneous thoughts about research and life # blog_description will be displayed in your blog page
-permalink: /blog/:year/:title/
-lsi: false # produce an index for related posts
+# blog_name: Blog # blog_name will be displayed in your blog page
+# blog_description: Random miscellaneous thoughts about research and life # blog_description will be displayed in your blog page
+# permalink: /blog/:year/:title/
+# lsi: false # produce an index for related posts
 
 # Pagination
 pagination:
@@ -153,15 +153,13 @@ newsletter:
 
 collections:
   books:
-    output: false
+    output: true
   news:
     defaults:
       layout: post
     output: true
   projects:
     output: true
-  teachings:
-    output: false
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -643,20 +641,3 @@ third_party_libraries:
 # Get external JSON data
 # -----------------------------------------------------------------------------
 
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references

@@ -1,49 +1,105 @@
 ---
-layout: page
+layout: default
 ---
-{{ content }}
+{% if page._styles %}
+  <style type="text/css">{{ page._styles }}</style>
+{% endif %}
 
-{% if page.collection and page.collection.size > 0 %}
-  {% assign collection = site[page.collection] %}
+{% assign collection = site[page.collection] %}
+
+<div class="project">
+  <header class="blog-hero">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="page-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
   {% if collection and collection.size > 0 %}
-    {% for item in collection reversed %}
-      {% assign current_year = item.started | date: '%Y' %}
-      {% if current_year != year %}
-        {% unless forloop.first %}
-          </ul>
-        {% endunless %}
-        <h1 id="y{{item.started | date: "%Y"}}">
-          <a href="{{ current_year | prepend: '/books/' | relative_url }}">{{ current_year }}</a>
-        </h1>
-        <ul>
-          {% assign year = current_year %}
-      {% endif %}
-
-      <figure class="cover">
-        <a class="cover-link" href="{{ item.url | relative_url }}">
-          {% if item.cover %}
-            <img alt="{{ item.title }} cover" src="{{ item.cover | prepend: page.covers | relative_url }}" style="height:200px">
-          {% elsif item.olid %}
-            <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/olid/{{ item.olid }}-L.jpg?default=false" style="height:200px">
-          {% elsif item.isbn %}
-            <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn }}-L.jpg?default=false" style="height:200px">
+    {% comment %}Split space-separated tags from every book into a flat list{% endcomment %}
+    {% assign all_tags_str = "" %}
+    {% for item in collection %}
+      {% if item.tags %}
+        {% assign item_tags = item.tags | join: " " | split: " " %}
+        {% for tag in item_tags %}
+          {% if tag != "" %}
+            {% assign all_tags_str = all_tags_str | append: tag | append: "|" %}
           {% endif %}
-          {% if item.status %}
-            {% assign statuses = 'abandoned,finished,interested,paused,queued,reading,reread' | split: ',' %}
-            {% assign status = item.status | downcase | strip %}
-            {% if statuses contains status %}
-              <figcaption class="{{ status | downcase }}">{{ status | upcase }}</figcaption>
-            {% else %}
-              <figcaption class="uncategorized">UNCATEGORIZED</figcaption>
-            {% endif %}
-          {% else %}
-            <figcaption class="uncategorized">UNCATEGORIZED</figcaption>
-          {% endif %}
-        </a>
-      </figure>
-      {% if forloop.last %}
-        </ul>
+        {% endfor %}
       {% endif %}
     {% endfor %}
+    {% assign tags_flat = all_tags_str | split: "|" | compact %}
+    {% assign unique_tags = tags_flat | uniq %}
+
+    {% comment %}Build zero-padded "count~~tag" strings so a lexicographic sort gives frequency order{% endcomment %}
+    {% assign tagged_counts = "" %}
+    {% for tag in unique_tags %}
+      {% assign cnt = 0 %}
+      {% for t in tags_flat %}
+        {% if t == tag %}{% assign cnt = cnt | plus: 1 %}{% endif %}
+      {% endfor %}
+      {% assign padded = "000" | append: cnt | slice: -3, 3 %}
+      {% assign tagged_counts = tagged_counts | append: padded | append: "~~" | append: tag | append: "||" %}
+    {% endfor %}
+    {% assign sorted_tags = tagged_counts | split: "||" | sort | reverse %}
+
+    {% if unique_tags.size > 0 %}
+      <div class="tag-list">
+        <p class="keywords-title" style="color: #fff;">Keywords</p>
+        <ul class="keywords-list">
+          {% for entry in sorted_tags %}
+            {% if entry != "" %}
+              {% assign parts = entry | split: "~~" %}
+              {% assign tag = parts[1] %}
+              <li class="keywords-item">
+                <a class="tag-label" style="color: #fff;" href="{{ tag | slugify | prepend: '/books/tag/' | relative_url }}">
+                  <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
   {% endif %}
-{% endif %}
+
+  <article>
+    <div class="vertical-divider"></div>
+    <div class="page-paper books-paper">
+
+      {% if content != "" %}
+        <div class="books-intro">{{ content }}</div>
+      {% endif %}
+
+      {% if collection and collection.size > 0 %}
+        {% assign year = "" %}
+        {% for item in collection reversed %}
+          {% assign current_year = item.started | date: '%Y' %}
+          {% if current_year != year %}
+            {% unless forloop.first %}</div>{% endunless %}
+            <h2 class="books-year-heading">
+              <a href="{{ current_year | prepend: '/books/' | relative_url }}">{{ current_year }}</a>
+            </h2>
+            <div class="books-row">
+            {% assign year = current_year %}
+          {% endif %}
+
+          <figure class="cover">
+            <a class="cover-link" href="{{ item.url | relative_url }}">
+              {% if item.cover %}
+                <img alt="{{ item.title }} cover" src="{{ item.cover | relative_url }}" style="height:200px">
+              {% elsif item.olid %}
+                <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/olid/{{ item.olid }}-L.jpg?default=false" style="height:200px">
+              {% elsif item.isbn %}
+                <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn }}-L.jpg?default=false" style="height:200px">
+              {% endif %}
+            </a>
+          </figure>
+
+          {% if forloop.last %}</div>{% endif %}
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </article>
+</div>

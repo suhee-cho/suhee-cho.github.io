@@ -361,8 +361,8 @@ body[data-jp-theme-light="false"] {
   /* scrollbar related styles. Supports every browser except Edge. */
 
   /* colors based on JetBrain's Darcula theme */
-  --jp-scrollbar-background-color: #3f4244;
-  --jp-scrollbar-thumb-color: 88, 96, 97; /* need to specify thumb color as an RGB triplet */
+  --jp-scrollbar-background-color: var(--global-bg-color);
+  --jp-scrollbar-thumb-color: 0.8, 0.8, 0.8; /* need to specify thumb color as an RGB triplet */
 
   --jp-scrollbar-endpad: 3px; /* the minimum gap between the thumb and the ends of a scrollbar */
 

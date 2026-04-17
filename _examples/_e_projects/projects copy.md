@@ -3,19 +3,20 @@ layout: page
 title: Projects
 permalink: /projects/
 description: Collection of my research projects.
-nav: true
-nav_order: 4
-display_tags: [computational neuroscience, machine learning]
+nav: false
+nav_order: 3
+display_categories: [work, fun]
 horizontal: false
 ---
 
-<!-- pages/projects.md -->
-<div class="project">
+<div class="projects">
 
 <!-- Display projects without categories -->
-<div class="vertical-divider"></div>
+
 {% assign sorted_projects = site.projects | sort: "importance" %}
+
   <!-- Generate cards for each project -->
+
 {% if page.horizontal %}
 
   <div class="container">

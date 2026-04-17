@@ -1,7 +1,64 @@
 ---
 layout: page
-title: news
+title: News
 permalink: /news/
+description: Some small but exciting news in my life
+nav: true
+display_tags: [publication, award]
+nav_order: 1
 ---
 
-{% include news.liquid %}
+{% assign news_docs = site.news | sort: "date" | reverse %}
+{% assign news_by_year = news_docs | group_by_exp: "item", "item.date | date: '%Y'" %}
+
+<div class="news">
+  {% for y in news_by_year %}
+    <details class="news-year-block" open>
+      <summary class="news-year">
+        <span class="news-year-text">{{ y.name }}</span>
+        <span class="news-year-toggle" aria-hidden="true"></span>
+      </summary>
+
+      {% assign news_by_month = y.items | group_by_exp: "item", "item.date | date: '%m'" %}
+      {% for m in news_by_month %}
+        {% assign month_label = m.items[0].date | date: "%B" %}
+
+        <div class="month-entry">
+          <h4 class="news-month">{{ month_label }}</h4>
+
+          <div class="news-card">
+            <ul class="news-list">
+              {% for item in m.items %}
+                <li class="news-item">
+                  <span class="news-arrow" aria-hidden="true">▶</span>
+
+                  <div class="news-item-content">
+                    {% if item.inline %}
+                      <span class="news-inline">
+                        {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                      </span>
+                    {% else %}
+                      {% if item.external_url %}
+                        <a class="news-title" href="{{ item.external_url }}" target="_blank" rel="noopener noreferrer">
+                          {{ item.title }}
+                        </a>
+                      {% else %}
+                        <a class="news-title" href="{{ item.url | relative_url }}">
+                          {{ item.title }}
+                        </a>
+                      {% endif %}
+                    {% endif %}
+
+                    <div class="news-date">{{ item.date | date: "%b %-d" }}</div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </details>
+  {% endfor %}
+</div>
+
+<!-- {% include news.liquid %} -->

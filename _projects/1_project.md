@@ -1,11 +1,12 @@
 ---
-layout: page
+layout: post
 title: project 1
 description: with background image
 img: assets/img/12.jpg
 importance: 1
-category: work
+tags: work
 related_publications: true
+rootlink: /projects/
 ---
 
 Every project has a beautiful feature showcase page.

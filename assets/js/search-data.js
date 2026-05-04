@@ -84,6 +84,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/fish_dont_exist.html";
+            },},{id: "books-half-his-age",
+          title: 'Half his age',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/half_his_age.html";
             },},{id: "books-hillbilly-elegy",
           title: 'Hillbilly Elegy',
           description: "",
@@ -99,16 +104,38 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/raising_hare.html";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "books-the-alchemist",
+          title: 'The Alchemist',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the_alchemist.html";
+            },},{id: "news-a-long-announcement-with-details",
           title: 'A long announcement with details',
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/announcement_2.html";
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+          description: "",
+          section: "News",},{id: "news-kaist-graduation",
+          title: 'Kaist graduation',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/KAIST%20graduation.html";
+            },},{id: "news-suhee-has-been-selected-as-an-awardee-of-korea-talent-award-대한민국-인재상",
+          title: 'Suhee has been selected as an awardee of Korea Talent Award (대한민국 인재상)!...',
+          description: "",
+          section: "News",},{id: "news-suhee-has-been-selected-as-a-fellow-of-overseas-phd-fellowship-supported-by-korea-foundation-for-advanced-studies",
+          title: 'Suhee has been selected as a fellow of Overseas PhD fellowship supported by...',
+          description: "",
+          section: "News",},{id: "news-a-preprint-work-with-dr-jay-mcclelland-titled-capturing-rapid-learning-in-an-extended-successor-representation-theory-of-the-cognitive-map-has-been-posted-on-biorxiv-bookmark-tabs",
+          title: 'A preprint work with Dr. Jay McClelland, titled “Capturing rapid learning in an...',
+          description: "",
+          section: "News",},{id: "news-suhee-has-been-admitted-to-and-commited-to-the-psychology-phd-program-at-stanford-university",
+          title: 'Suhee has been admitted to and commited to the Psychology PhD program at...',
+          description: "",
+          section: "News",},{id: "news-suhee-has-been-selected-as-a-knight-hennessy-scholar-at-stanford-university-congrats",
+          title: 'Suhee has been selected as a Knight-Hennessy Scholar at Stanford University! Congrats!',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',

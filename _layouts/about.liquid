@@ -112,3 +112,40 @@ layout: default
     </div>
   </article>
 </div>
+
+<script>
+(function () {
+  var sectionIds = ['about-intro', 'about-news', 'about-posts', 'about-pubs'];
+
+  var sections = sectionIds
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  var navLinks = Array.from(document.querySelectorAll('.timeline-link'));
+
+  function setActive(id) {
+    navLinks.forEach(function (link) {
+      var href = link.getAttribute('href');
+      link.classList.toggle('active', href === '#' + id);
+    });
+  }
+
+  function onScroll() {
+    // Trigger point: 35% down from the top of the viewport
+    var triggerY = window.scrollY + window.innerHeight * 0.35;
+    var current = sections[0];
+
+    sections.forEach(function (section) {
+      if (section.offsetTop <= triggerY) {
+        current = section;
+      }
+    });
+
+    if (current) setActive(current.id);
+  }
+
+  // Run once on load, then on every scroll
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>

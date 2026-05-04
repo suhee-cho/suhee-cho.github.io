@@ -1,7 +1,7 @@
 ---
 layout: book-review
 title: Eleanor Oliphant is completely fine
-author: Lulu Miller
+author: Gail Honeyman
 #cover: assets/img/book_covers/the_godfather.jpg
 olid: OL27963825M #  use Open Library ID to fetch cover (if no `cover` is provided)
 tags: Novel

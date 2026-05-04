@@ -16,7 +16,6 @@ layout: default
   </header>
 
   {% if collection and collection.size > 0 %}
-    {% comment %}Split space-separated tags from every book into a flat list{% endcomment %}
     {% assign all_tags_str = "" %}
     {% for item in collection %}
       {% if item.tags %}
@@ -31,7 +30,6 @@ layout: default
     {% assign tags_flat = all_tags_str | split: "|" | compact %}
     {% assign unique_tags = tags_flat | uniq %}
 
-    {% comment %}Build zero-padded "count~~tag" strings so a lexicographic sort gives frequency order{% endcomment %}
     {% assign tagged_counts = "" %}
     {% for tag in unique_tags %}
       {% assign cnt = 0 %}
@@ -47,12 +45,12 @@ layout: default
       <div class="tag-list">
         <p class="keywords-title" style="color: #fff;">Keywords</p>
         <ul class="keywords-list">
-          {% for entry in sorted_tags %}
+          {% for entry in sorted_tags limit:5 %}
             {% if entry != "" %}
               {% assign parts = entry | split: "~~" %}
               {% assign tag = parts[1] %}
               <li class="keywords-item">
-                <a class="tag-label" style="color: #fff;" href="{{ tag | slugify | prepend: '/books/tag/' | relative_url }}">
+                <a class="tag-label" data-tag="{{ tag | slugify }}" href="#" style="color: #fff;">
                   <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
                 </a>
               </li>
@@ -64,7 +62,6 @@ layout: default
   {% endif %}
 
   <article>
-    <div class="vertical-divider"></div>
     <div class="page-paper books-paper">
 
       {% if content != "" %}
@@ -76,7 +73,8 @@ layout: default
         {% for item in collection reversed %}
           {% assign current_year = item.started | date: '%Y' %}
           {% if current_year != year %}
-            {% unless forloop.first %}</div>{% endunless %}
+            {% unless forloop.first %}</div></div>{% endunless %}
+            <div class="filter-group">
             <h2 class="books-year-heading">
               <a href="{{ current_year | prepend: '/books/' | relative_url }}">{{ current_year }}</a>
             </h2>
@@ -84,7 +82,7 @@ layout: default
             {% assign year = current_year %}
           {% endif %}
 
-          <figure class="cover">
+          <figure class="cover filterable" data-tags="{{ item.tags | join: ' ' | split: ' ' | join: ' ' }}">
             <a class="cover-link" href="{{ item.url | relative_url }}">
               {% if item.cover %}
                 <img alt="{{ item.title }} cover" src="{{ item.cover | relative_url }}" style="height:200px">
@@ -96,10 +94,51 @@ layout: default
             </a>
           </figure>
 
-          {% if forloop.last %}</div>{% endif %}
+          {% if forloop.last %}</div></div>{% endif %}
         {% endfor %}
       {% endif %}
 
     </div>
   </article>
 </div>
+
+<script>
+(function () {
+  var activeTag = null;
+
+  function slugify(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-tag]');
+    if (!btn) return;
+    e.preventDefault();
+
+    var tag = slugify(btn.dataset.tag);
+    activeTag = (activeTag === tag) ? null : tag;
+
+    document.querySelectorAll('[data-tag]').forEach(function (b) {
+      b.classList.toggle('tag-active', slugify(b.dataset.tag) === activeTag);
+    });
+
+    document.querySelectorAll('.filterable').forEach(function (item) {
+      if (!activeTag) {
+        item.hidden = false;
+      } else {
+        var tags = (item.dataset.tags || '').split(/\s+/).filter(Boolean).map(slugify);
+        item.hidden = !tags.includes(activeTag);
+      }
+    });
+
+    document.querySelectorAll('.filter-group').forEach(function (group) {
+      if (!activeTag) {
+        group.hidden = false;
+      } else {
+        var visible = Array.from(group.querySelectorAll('.filterable')).some(function (c) { return !c.hidden; });
+        group.hidden = !visible;
+      }
+    });
+  });
+})();
+</script>

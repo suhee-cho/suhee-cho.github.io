@@ -8,5 +8,5 @@ tags: Memoir Nature
 buy_link: https://a.co/d/0idCBhEU
 finished: 2025-06-20
 released: 2020
-stars: 4
+stars: 5
 ---

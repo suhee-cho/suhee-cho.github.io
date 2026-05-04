@@ -5,7 +5,7 @@ rootlink: /blog/
 title: Blog
 description: Random miscellaneous thoughts about research and life
 nav: true
-display_tags: [essay, language]
+tag_source: posts
 nav_order: 2
 pagination:
   enabled: true
@@ -15,12 +15,10 @@ pagination:
   sort_field: date
   sort_reverse: true
   trail:
-    before: 1 # The number of links before the current page
-    after: 3 # The number of links after the current page
+    before: 1
+    after: 3
 ---
 
-<div class="project">
-<div class="vertical-divider"></div>
 <div class="page-paper">
   <ul class="post-list">
 
@@ -38,9 +36,9 @@ pagination:
         {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
       {% endif %}
       {% assign year = post.date | date: "%Y" %}
-      {% assign tags = post.tags | join: "" %}
+      {% assign post_tag_str = post.tags | join: " " %}
 
-      <li>
+      <li class="filterable" data-tags="{{ post_tag_str }}">
         <h3>
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </h3>
@@ -51,7 +49,7 @@ pagination:
           {% if post.external_source %}
             &nbsp; &middot; &nbsp; {{ post.external_source }}
           {% endif %}
-          {% if tags != "" %}
+          {% if post_tag_str != "" %}
             &nbsp; &middot; &nbsp;
             {% for tag in post.tags %}
               <a class="black-red-button" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
@@ -69,5 +67,4 @@ pagination:
   {% if page.pagination.enabled %}
     {% include pagination.liquid %}
   {% endif %}
-</div>
 </div>

@@ -2,9 +2,10 @@
 layout: page
 title: News
 permalink: /news/
+rootlink: /news/
 description: Some small but exciting news in my life
 nav: true
-display_tags: [publication, award]
+tag_source: news
 nav_order: 1
 ---
 
@@ -13,7 +14,7 @@ nav_order: 1
 
 <div class="news">
   {% for y in news_by_year %}
-    <details class="news-year-block" open>
+    <details class="news-year-block filter-group" open>
       <summary class="news-year">
         <span class="news-year-text">{{ y.name }}</span>
         <span class="news-year-toggle" aria-hidden="true"></span>
@@ -23,13 +24,14 @@ nav_order: 1
       {% for m in news_by_month %}
         {% assign month_label = m.items[0].date | date: "%B" %}
 
-        <div class="month-entry">
+        <div class="month-entry filter-group">
           <h4 class="news-month">{{ month_label }}</h4>
 
           <div class="news-card">
             <ul class="news-list">
               {% for item in m.items %}
-                <li class="news-item">
+                {% assign item_tag_str = item.tags | join: " " %}
+                <li class="news-item filterable" data-tags="{{ item_tag_str }}">
                   <span class="news-arrow" aria-hidden="true">▶</span>
 
                   <div class="news-item-content">
@@ -60,5 +62,3 @@ nav_order: 1
     </details>
   {% endfor %}
 </div>
-
-<!-- {% include news.liquid %} -->

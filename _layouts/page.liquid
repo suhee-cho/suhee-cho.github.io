@@ -2,10 +2,7 @@
 layout: default
 ---
 {% if page._styles %}
-  <!-- Page/Post style -->
-  <style type="text/css">
-    {{ page._styles }}
-  </style>
+  <style type="text/css">{{ page._styles }}</style>
 {% endif %}
 
 <div class="project">
@@ -16,22 +13,100 @@ layout: default
     {% endif %}
   </header>
 
-  {% if page.display_tags and page.display_tags.size > 0 %}
-    <div class="tag-list">
-      <p class="keywords-title" style="color: #fff;">Keywords</p>
-      <ul class="keywords-list">
-        {% for tag in page.display_tags %}
-          <li class="keywords-item">
-            <a class="tag-label" style="color: #fff;" href="{{ tag | slugify | prepend: 'tag/' | prepend: page.rootlink | relative_url }}">
-              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
-            </a>
-          </li>
+  {% comment %}Dynamic frequency-sorted tags from the page's collection{% endcomment %}
+  {% if page.tag_source %}
+    {% if page.tag_source == "posts" %}{% assign tag_items = site.posts %}
+    {% elsif page.tag_source == "projects" %}{% assign tag_items = site.projects %}
+    {% elsif page.tag_source == "news" %}{% assign tag_items = site.news %}
+    {% endif %}
+
+    {% assign all_tags_str = "" %}
+    {% for item in tag_items %}
+      {% if item.tags %}
+        {% assign item_tags = item.tags | join: " " | split: " " %}
+        {% for tag in item_tags %}
+          {% if tag != "" %}{% assign all_tags_str = all_tags_str | append: tag | append: "|" %}{% endif %}
         {% endfor %}
-      </ul>
-    </div>
+      {% endif %}
+    {% endfor %}
+    {% assign tags_flat = all_tags_str | split: "|" | compact %}
+    {% assign unique_tags = tags_flat | uniq %}
+
+    {% assign tagged_counts = "" %}
+    {% for tag in unique_tags %}
+      {% assign cnt = 0 %}
+      {% for t in tags_flat %}
+        {% if t == tag %}{% assign cnt = cnt | plus: 1 %}{% endif %}
+      {% endfor %}
+      {% assign padded = "000" | append: cnt | slice: -3, 3 %}
+      {% assign tagged_counts = tagged_counts | append: padded | append: "~~" | append: tag | append: "||" %}
+    {% endfor %}
+    {% assign sorted_tags = tagged_counts | split: "||" | sort | reverse %}
+
+    {% if unique_tags.size > 0 %}
+      <div class="tag-list">
+        <p class="keywords-title" style="color: #fff;">Keywords</p>
+        <ul class="keywords-list">
+          {% for entry in sorted_tags limit:5 %}
+            {% if entry != "" %}
+              {% assign parts = entry | split: "~~" %}
+              {% assign tag = parts[1] %}
+              <li class="keywords-item">
+                <a class="tag-label" data-tag="{{ tag | slugify }}" href="#" style="color: #fff;">
+                  <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
   {% endif %}
-  
+
   <article>
     {{ content }}
   </article>
 </div>
+
+{% if page.tag_source %}
+<script>
+(function () {
+  var activeTag = null;
+
+  function slugify(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-tag]');
+    if (!btn) return;
+    e.preventDefault();
+
+    var tag = slugify(btn.dataset.tag);
+    activeTag = (activeTag === tag) ? null : tag;
+
+    document.querySelectorAll('[data-tag]').forEach(function (b) {
+      b.classList.toggle('tag-active', slugify(b.dataset.tag) === activeTag);
+    });
+
+    document.querySelectorAll('.filterable').forEach(function (item) {
+      if (!activeTag) {
+        item.hidden = false;
+      } else {
+        var tags = (item.dataset.tags || '').split(/\s+/).filter(Boolean).map(slugify);
+        item.hidden = !tags.includes(activeTag);
+      }
+    });
+
+    document.querySelectorAll('.filter-group').forEach(function (group) {
+      if (!activeTag) {
+        group.hidden = false;
+      } else {
+        var visible = Array.from(group.querySelectorAll('.filterable')).some(function (c) { return !c.hidden; });
+        group.hidden = !visible;
+      }
+    });
+  });
+})();
+</script>
+{% endif %}

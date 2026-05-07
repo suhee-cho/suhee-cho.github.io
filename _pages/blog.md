@@ -52,7 +52,7 @@ pagination:
           {% if post_tag_str != "" %}
             &nbsp; &middot; &nbsp;
             {% for tag in post.tags %}
-              <a class="black-red-button" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+              <a class="black-red-button" data-tag="{{ tag | slugify }}" href="#">
               <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
               {% unless forloop.last %}
                 &nbsp;

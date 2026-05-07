@@ -537,7 +537,7 @@ footer .footer-mark {
   content: none !important;
 }
 
-.post-list > li + li {
+.post-list > li:not([hidden]) + li:not([hidden]) {
   border-top: 1px solid rgba(0,0,0,0.18) !important;
   margin-top: 1rem;
 }
@@ -669,9 +669,43 @@ a.black-red-button:focus {
 }
 
 .books-intro {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.10);
+  margin-bottom: 1.5rem;
+}
+
+.books-sort-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.books-sort-label {
+  font-size: 0.82rem;
+  color: rgba(0,0,0,0.35);
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.books-sort-btn {
+  background: none;
+  border: none;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.82rem;
+  color: rgba(0,0,0,0.35);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.15s ease, font-size 0.15s ease;
+  line-height: 1.4;
+}
+
+.books-sort-btn:hover {
+  color: #580000;
+}
+
+.books-sort-btn.active {
+  font-size: 0.92rem;
+  color: #580000;
+  font-weight: 500;
 }
 
 .books-year-heading {
@@ -876,6 +910,32 @@ figure.cover:hover img {
   font-size: 0.95rem;
   color: rgba(0,0,0,0.75);
   margin: 0.3rem 0;
+}
+
+.book-review-sub-ratings {
+  margin: 0.4rem 0 0.2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-review-sub-rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.60);
+  padding: 0.18rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.book-review-sub-rating-row:last-child {
+  border-bottom: none;
+}
+
+.book-review-sub-rating-score {
+  font-weight: 600;
+  color: rgba(0,0,0,0.75);
+  margin-left: 1rem;
 }
 
 .book-review-divider {

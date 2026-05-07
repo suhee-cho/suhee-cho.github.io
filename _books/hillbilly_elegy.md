@@ -9,5 +9,10 @@ tags: Memoir Politics
 buy_link: https://a.co/d/0enZ7Ju7
 finished: 2025-06-29
 released: 2017
-stars: 3
+overall: 3
+relevance & interest: 3
+personal resonance: 4.5
+page-turner factor: 4
+writing style & tone: 4
+book hangover factor: 3.5
 ---

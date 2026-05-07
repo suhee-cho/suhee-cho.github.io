@@ -51,17 +51,56 @@ layout: default
         <p class="book-review-meta-item">Completed: {{ page.finished }}</p>
       {% endif %}
 
-      {% if page.stars %}
+      {% if page.overall %}
         <p class="book-review-meta-item">
-          Rating:&nbsp;
-          {% assign full_stars = page.stars | floor %}
-          {% assign half_star = page.stars | minus: full_stars %}
+          Overall:&nbsp;
+          {% assign full_stars = page.overall | floor %}
+          {% assign half_star = page.overall | minus: full_stars %}
           {% assign empty_stars = 5 | minus: full_stars %}
           {% if half_star > 0 %}{% assign empty_stars = empty_stars | minus: 1 %}{% endif %}
           {% for i in (1..full_stars) -%}<i class="fa-solid fa-star fa-sm"></i>{%- endfor -%}
           {%- if half_star > 0 %}<i class="fa-solid fa-star-half-stroke fa-sm"></i>{% endif -%}
           {%- for i in (1..empty_stars) -%}<i class="fa-regular fa-star fa-sm"></i>{%- endfor %}
         </p>
+      {% endif %}
+
+      {% assign has_sub_ratings = false %}
+      {% if page['relevance & interest'] or page['personal resonance'] or page['page-turner factor'] or page['writing style & tone'] or page['book hangover factor'] %}
+        {% assign has_sub_ratings = true %}
+      {% endif %}
+      {% if has_sub_ratings %}
+        <div class="book-review-sub-ratings">
+          {% if page['relevance & interest'] %}
+            <div class="book-review-sub-rating-row">
+              <span class="book-review-sub-rating-label">Relevance &amp; interest</span>
+              <span class="book-review-sub-rating-score">{{ page['relevance & interest'] | plus: 0.0 | round: 1 }}</span>
+            </div>
+          {% endif %}
+          {% if page['personal resonance'] %}
+            <div class="book-review-sub-rating-row">
+              <span class="book-review-sub-rating-label">Personal resonance</span>
+              <span class="book-review-sub-rating-score">{{ page['personal resonance'] | plus: 0.0 | round: 1 }}</span>
+            </div>
+          {% endif %}
+          {% if page['page-turner factor'] %}
+            <div class="book-review-sub-rating-row">
+              <span class="book-review-sub-rating-label">Page-turner factor</span>
+              <span class="book-review-sub-rating-score">{{ page['page-turner factor'] | plus: 0.0 | round: 1 }}</span>
+            </div>
+          {% endif %}
+          {% if page['writing style & tone'] %}
+            <div class="book-review-sub-rating-row">
+              <span class="book-review-sub-rating-label">Writing style &amp; tone</span>
+              <span class="book-review-sub-rating-score">{{ page['writing style & tone'] | plus: 0.0 | round: 1 }}</span>
+            </div>
+          {% endif %}
+          {% if page['book hangover factor'] %}
+            <div class="book-review-sub-rating-row">
+              <span class="book-review-sub-rating-label">Book hangover factor</span>
+              <span class="book-review-sub-rating-score">{{ page['book hangover factor'] | plus: 0.0 | round: 1 }}</span>
+            </div>
+          {% endif %}
+        </div>
       {% endif %}
 
     </div>

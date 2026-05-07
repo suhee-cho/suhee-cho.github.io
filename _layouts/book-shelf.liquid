@@ -64,38 +64,45 @@ layout: default
   <article>
     <div class="page-paper books-paper">
 
-      {% if content != "" %}
+      {% assign trimmed_content = content | strip %}
+      {% if trimmed_content != "" %}
         <div class="books-intro">{{ content }}</div>
       {% endif %}
 
+      <div class="books-sort-bar">
+        <span class="books-sort-label">Sort by</span>
+        <button class="books-sort-btn active" data-sort="az">A-Z</button>
+        <button class="books-sort-btn" data-sort="finished">Finished date</button>
+        <button class="books-sort-btn" data-sort="released">Published date</button>
+        <button class="books-sort-btn" data-sort="rating">Ratings</button>
+      </div>
+
       {% if collection and collection.size > 0 %}
-        {% assign year = "" %}
-        {% for item in collection reversed %}
-          {% assign current_year = item.started | date: '%Y' %}
-          {% if current_year != year %}
-            {% unless forloop.first %}</div></div>{% endunless %}
-            <div class="filter-group">
-            <h2 class="books-year-heading">
-              <a href="{{ current_year | prepend: '/books/' | relative_url }}">{{ current_year }}</a>
-            </h2>
-            <div class="books-row">
-            {% assign year = current_year %}
-          {% endif %}
-
-          <figure class="cover filterable" data-tags="{{ item.tags | join: ' ' | split: ' ' | join: ' ' }}">
-            <a class="cover-link" href="{{ item.url | relative_url }}">
-              {% if item.cover %}
-                <img alt="{{ item.title }} cover" src="{{ item.cover | relative_url }}" style="height:200px">
-              {% elsif item.olid %}
-                <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/olid/{{ item.olid }}-L.jpg?default=false" style="height:200px">
-              {% elsif item.isbn %}
-                <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn }}-L.jpg?default=false" style="height:200px">
-              {% endif %}
-            </a>
-          </figure>
-
-          {% if forloop.last %}</div></div>{% endif %}
-        {% endfor %}
+        <div id="book-pool" hidden>
+          {% for item in collection %}
+            {% assign finished_year = item.finished | date: '%Y' %}
+            {% if finished_year == "" %}{% assign finished_year = item.started | date: '%Y' %}{% endif %}
+            <figure class="cover filterable"
+              data-tags="{{ item.tags | join: ' ' | split: ' ' | join: ' ' }}"
+              data-title="{{ item.title | escape }}"
+              data-released="{{ item.released | default: '' }}"
+              data-finished="{{ item.finished | default: '' }}"
+              data-finished-year="{{ finished_year }}"
+              data-released-year="{{ item.released | default: '' }}"
+              data-overall="{{ item.overall | default: 0 }}">
+              <a class="cover-link" href="{{ item.url | relative_url }}">
+                {% if item.cover %}
+                  <img alt="{{ item.title }} cover" src="{{ item.cover | relative_url }}" style="height:200px">
+                {% elsif item.olid %}
+                  <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/olid/{{ item.olid }}-L.jpg?default=false" style="height:200px">
+                {% elsif item.isbn %}
+                  <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn }}-L.jpg?default=false" style="height:200px">
+                {% endif %}
+              </a>
+            </figure>
+          {% endfor %}
+        </div>
+        <div id="books-display"></div>
       {% endif %}
 
     </div>
@@ -104,41 +111,146 @@ layout: default
 
 <script>
 (function () {
-  var activeTag = null;
+  var activeTag  = null;
+  var activeSort = 'az';
 
   function slugify(s) {
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
+  function poolFigures() {
+    return Array.from(document.querySelectorAll('#book-pool .filterable, #books-display .filterable'));
+  }
+
+  function groupKey(fig) {
+    if (activeSort === 'az') return '';
+    if (activeSort === 'finished') return fig.dataset.finishedYear || '—';
+    if (activeSort === 'released') return String(fig.dataset.releasedYear || '—');
+    if (activeSort === 'rating') {
+      var r = parseFloat(fig.dataset.overall) || 0;
+      return r > 0 ? String(Math.floor(r)) : 'Unrated';
+    }
+    return '—';
+  }
+
+  function sortKey(fig) {
+    if (activeSort === 'az')       return (fig.dataset.title || '').toLowerCase();
+    if (activeSort === 'finished') return fig.dataset.finished || '';
+    if (activeSort === 'released') return String(fig.dataset.released || '');
+    if (activeSort === 'rating')   return parseFloat(fig.dataset.overall) || 0;
+    return '';
+  }
+
+  function headingHTML(key) {
+    if (activeSort === 'rating') {
+      if (key === 'Unrated') return 'Unrated';
+      var n = parseInt(key, 10);
+      var html = '';
+      for (var i = 1; i <= 5; i++) {
+        html += i <= n
+          ? '<i class="fa-solid fa-star fa-sm"></i>'
+          : '<i class="fa-regular fa-star fa-sm"></i>';
+      }
+      return html;
+    }
+    return key;
+  }
+
+  function applyTagToFig(fig) {
+    if (!activeTag) { fig.hidden = false; return; }
+    var tags = (fig.dataset.tags || '').split(/\s+/).filter(Boolean).map(slugify);
+    fig.hidden = !tags.includes(activeTag);
+  }
+
+  function renderBooks() {
+    var display = document.getElementById('books-display');
+    var figs = poolFigures();
+
+    figs.sort(function (a, b) {
+      var ka = sortKey(a), kb = sortKey(b);
+      if (activeSort === 'rating') return kb - ka;
+      return ka < kb ? 1 : ka > kb ? -1 : 0;
+    });
+
+    var groups = {}, order = [];
+    figs.forEach(function (fig) {
+      var k = groupKey(fig);
+      if (!groups[k]) { groups[k] = []; order.push(k); }
+      groups[k].push(fig);
+    });
+
+    if (activeSort === 'rating') {
+      order.sort(function (a, b) {
+        if (a === 'Unrated') return 1;
+        if (b === 'Unrated') return -1;
+        return parseInt(b, 10) - parseInt(a, 10);
+      });
+    } else {
+      order.sort(function (a, b) {
+        if (a === '—') return 1;
+        if (b === '—') return -1;
+        return b.localeCompare(a);
+      });
+    }
+
+    display.innerHTML = '';
+    order.forEach(function (key) {
+      var group = document.createElement('div');
+      group.className = 'filter-group';
+
+      if (key !== '') {
+        var h2 = document.createElement('h2');
+        h2.className = 'books-year-heading';
+        h2.innerHTML = headingHTML(key);
+        group.appendChild(h2);
+      }
+
+      var row = document.createElement('div');
+      row.className = 'books-row';
+      groups[key].forEach(function (fig) {
+        applyTagToFig(fig);
+        row.appendChild(fig);
+      });
+      group.appendChild(row);
+
+      var hasVisible = groups[key].some(function (f) { return !f.hidden; });
+      group.hidden = !hasVisible;
+      display.appendChild(group);
+    });
+  }
+
+  function applyTagFilter() {
+    document.querySelectorAll('#books-display .filterable').forEach(applyTagToFig);
+    document.querySelectorAll('#books-display .filter-group').forEach(function (g) {
+      var vis = Array.from(g.querySelectorAll('.filterable')).some(function (f) { return !f.hidden; });
+      g.hidden = !vis;
+    });
+  }
+
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest('[data-tag]');
-    if (!btn) return;
-    e.preventDefault();
+    var sortBtn = e.target.closest('.books-sort-btn');
+    if (sortBtn) {
+      e.preventDefault();
+      activeSort = sortBtn.dataset.sort;
+      document.querySelectorAll('.books-sort-btn').forEach(function (b) {
+        b.classList.toggle('active', b === sortBtn);
+      });
+      renderBooks();
+      return;
+    }
 
-    var tag = slugify(btn.dataset.tag);
-    activeTag = (activeTag === tag) ? null : tag;
-
-    document.querySelectorAll('[data-tag]').forEach(function (b) {
-      b.classList.toggle('tag-active', slugify(b.dataset.tag) === activeTag);
-    });
-
-    document.querySelectorAll('.filterable').forEach(function (item) {
-      if (!activeTag) {
-        item.hidden = false;
-      } else {
-        var tags = (item.dataset.tags || '').split(/\s+/).filter(Boolean).map(slugify);
-        item.hidden = !tags.includes(activeTag);
-      }
-    });
-
-    document.querySelectorAll('.filter-group').forEach(function (group) {
-      if (!activeTag) {
-        group.hidden = false;
-      } else {
-        var visible = Array.from(group.querySelectorAll('.filterable')).some(function (c) { return !c.hidden; });
-        group.hidden = !visible;
-      }
-    });
+    var tagBtn = e.target.closest('[data-tag]');
+    if (tagBtn) {
+      e.preventDefault();
+      var tag = slugify(tagBtn.dataset.tag);
+      activeTag = (activeTag === tag) ? null : tag;
+      document.querySelectorAll('[data-tag]').forEach(function (b) {
+        b.classList.toggle('tag-active', slugify(b.dataset.tag) === activeTag);
+      });
+      applyTagFilter();
+    }
   });
+
+  renderBooks();
 })();
 </script>

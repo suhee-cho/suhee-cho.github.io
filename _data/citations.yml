@@ -1,13 +1,21 @@
 metadata:
-  last_updated: '2026-07-15'
+  last_updated: '2026-08-07'
 papers:
   CmIrHRcAAAAJ:9yKSN-GCB0IC:
-    citations: 15
+    citations: 14
     title: Neuromimetic metaplasticity for adaptive continual learning without catastrophic forgetting
     year: '2025'
   CmIrHRcAAAAJ:UeHWp8X0CEIC:
     citations: 3
     title: Exploring the architectural biases of the cortical microcircuit
+    year: '2025'
+  CmIrHRcAAAAJ:W7OEmFMy1HYC:
+    citations: 0
+    title: Capturing Rapid Behavioral Adaptation in an Unified Theory of the Hippocampal Cognitive Map and its Neural Implementation
+    year: '2025'
+  CmIrHRcAAAAJ:YsMSGLbcyi4C:
+    citations: 1
+    title: Behavioral timescale synaptic plasticity, replay, and emergent behavioral choice
     year: '2025'
   CmIrHRcAAAAJ:zYLM7Y9cAGgC:
     citations: 0

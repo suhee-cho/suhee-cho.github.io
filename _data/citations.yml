@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-07'
+  last_updated: '2026-08-14'
 papers:
   CmIrHRcAAAAJ:9yKSN-GCB0IC:
     citations: 14
@@ -17,6 +17,10 @@ papers:
     citations: 1
     title: Behavioral timescale synaptic plasticity, replay, and emergent behavioral choice
     year: '2025'
+  CmIrHRcAAAAJ:eQOLeE2rZwMC:
+    citations: 0
+    title: METHOD AND DEVICE FOR ADDRESSING CATASTROPHIC FORGETTING IN ARTIFICIAL NEURAL NETWORKS USING NEUROMIMETIC METAPLASTICITY RULES OBSERVED IN NATURAL BRAINS
+    year: '2024'
   CmIrHRcAAAAJ:zYLM7Y9cAGgC:
     citations: 0
     title: Capturing rapid learning in an extended successor representation theory of the cognitive map

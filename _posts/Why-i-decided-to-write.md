@@ -1,0 +1,96 @@
+---
+layout: post
+title: Why I decided to write
+date: 2026-05-15
+description:
+tags: essay language
+rootlink: /blog/
+---
+#### Howdy, readers!
+I'd like to call this blog space a **project**. A project to write about my thoughts and leave them as a record, mainly for my future self as a reader, but also to inspire other people who are in research, writing, or who simply enjoy reading someone's observations about the world.
+
+The reason why I'm tagging this small webpage and these pieces of writing as grand **"project"** mainly stems from my language background. I was born and raised in South Korea, with Korean as my first language. Before entering college, I'd never imagined myself speaking anything other than Korean as my main language of daily conversation.
+
+A small fortune here is that I have been exposed to English since I was very young.
+I remember being in an afterschool English reading class when I was in 5th grade and really enjoyed it. My first book was *James and the giant peach*, written by Roald Dahl. Since I'd already read the Korean translated version of it, I was aware of the overall storyline. As soon as I started reading the book, I was fascinated to see how the same story can unfold in a totally different language -- how the characters were introduced, how the nuance was built and how the plot progressed. I borrowed the Korean version of the book from the library and compared the sentences one by one with the English version. I watched the movie version of it and discovered how things could be put differently in video form of media. After satisfied by my own digging of *James and the giant peach*, I started devouring other Roald Dahl's stories. *Fansastic Mr. Fox, Charlie and The Chocolate Factory, The Witches* and *Mathilda*. I believe I benefited tremendously from this experience, being able to quickly build my second world view upon the a totally foregin languge foundation.
+
+However, As I grew older, I also grew further away from enjoying learning English. The time I spent reading the text given to me in English class was the most boring moment I can recall. Those text mainly focus on non-fictional topics such as economics, politics, sociology that I didn't even enjoy in my native language. And it was ridiculous in that they didn't even bring the full text; they extracted one single paragraph from a random report, revised easy enough that a high schooler could understand without a full text but hard enough that not everybody would get a full score if it shows up on a midterm exam.
+
+Even the novels that I read written by english-speaking authors felt distant, mainly because I read them without understanding the cultural differences and historical background to resonate with them. I read *To kill the mokingbird* by Harper Lee in middle school. It was included in the must-read list attched on the library wall, and among the books on the list, it had the most shocking title. Well, later I found out that I was even misunderstanding the title that first draw me to pick up the book; The Korean title *앵무새 죽이기* sounds like To kill a 'parrot', not a 'mokingbird'. I thought it referred to a huge macaw I'd seen at a zoo. *So this is a book about killing this colorful intelligent bird? How shocking!* I even didn't know what the civial war was which definitely is a huge part of the book. In Korean, the American civil war is translated as "남북전쟁 (South-North war)", because... there were a lot of different civil wars happened in different countries so we don't want to refer to one particular civil war "civil war". So when I read the book, I thought civil war, or South-North war, meant Korean war because that literally was a war between South and North Korea. *But what is the Korean war doing with these people in Arizona?* No wonder why I couldn't get the story at all, was frustrated and stopped reading.
+
+But as much as I was frustrated in reading American or English literatures, I still believe I had growing interest in literature. I was a huge reader of Korean literatures, particularly short stories and plays. I was particularly interested in the pieces written in 19th century. Every single decade 
+People had different dreams, different generational issues they wanted to solve. They had different dreams and values.
+made me cry.
+
+
+
+All these efforts started blooming after I came back from Georgia. With a better understanding in history and cultures. and better English skills. I read the books in their original language. I read To kill the mockingbird again. The subsequent book by the same author, The watchman. There is a famous Korean play written by 이강백. I again start feeling the joy of comparing contrastingly different languages, cultures.
+
+
+Therefoer, I write.
+to appreciate my world view built upon English. 
+Interpret myself in the English background where I have not grown in. Trying to discover and describe what I aspire and what I dream here in the United States, and fulfill myself's needs to be expressed and presented to others.
+Ultimately, accept my English self to be merged and be a part of my core.
+
+
+
+
+
+
+
+
+
+Things flipped dramatically as I decided to live in the United States for a year, studying at Georgia Tech as an exchange student. When I first arrived in Atlanta, I realized I didn't even know how to order coffee in English. It was very uncanny. I'd been learning English ever since I was a nine year old kid. I had even taken college-level classes in English. My TOEFL score was good enough to allow me to apply for this exchange program. But all those things were focused on academic English. In wild scenes in the United States, you are supposed to speak something different.
+ 
+This caused me some practical problems that bothered me a lot in my early phase as a non-native exchange student. For example, as soon as I landed at Atlanta airport — first time breathing the air in the States! Yay! — I realized my unskilled communication had caused a serious issue in completing the apartment lease. The night was late as 10 pm, with two huge suitcases by my side, I had no shelter to lay my exhausted body. So... I ended up spending the night homeless in midtown. What an ultimate American experience a first-time newcomer can have! The next afternoon, I was finally able to win my bedroom key after a long, tedious quarrel with the leasing officer. Not only did the officer have a hard time understanding my Korean accent, but also I couldn't get her Southern accent. I later learned that the accent I heard in my childhood English class was only spoken by white-collar people in Boston.
+
+Despite all the awkward and unpleasant struggles, I would describe being proficient in a second language after you're mature enough to observe the evolution of your language ability is a truly enjoyable journey. It's fascinating to observe your second language space emerge and being more and more *independent* from the space of your mother tongue.
+
+What do I mean by independent? Well, before talking about that, I would like to differentiate thoughts from words or languages.
+
+<div class="dots-divider"></div>
+
+#### Relationship between thoughts and languages
+
+Thought is something very abstract. It not only includes logical thinking that you build step-by-step but also embraces feelings and emotions. As a neuroscientists, I would describe it as a pattern of neuronal firing in your brain. On the other hand, language is a tool for expressing these thoughts. In fact, there are multiple ways of expressing your thoughts, aside from language: we can dance, draw, sing, or even wink. (There is extremely interesting line of research employing different modes of expression done by an excellent faculty member in my department. Shout out to Dr. Judy Fan!!) People sometimes ask me whether I think in Korean or English. I think this question doesn't quite make sense. I don't necessarily think in either Korean or English. I just... feel the thoughts without wording them.
+
+A caveat here. Since language is one way of expressing abstract thoughts, it often does not mirror them fully. It's this simple: Can we explain, by words, what the color red is like to a blind person? Well, we can tell the wavelength of the light that the color reflects. We can say it is \#FF0000 in hex code and (1, 0, 0) in RGB. But is any of them truly representing red? No, there's something that each description misses. This is where we sometimes struggle finding the best way of putting our thoughts. And this struggle is even worse for multilinguals, as they always have an 'alternative.': "I don't like what I just said in English. That's not quite accurate description of what I'm thinking. If I were to speak Korean, I could've described my thought more precisely... Darn!"
+
+<div class="dots-divider"></div>
+
+#### Relationship between different languages
+
+Learning a second language is totally different from learning your mother tongue, because the language you newly learn highly depends on the languages you already speak. On the first day of my English class, the teacher taught me that "*Hello* means *안녕하세요*!" I also remember that I had a workbook full of widely used English words alongside Korean words with the same (or, I should say, the most similar) meanings.
+
+The key point I wanted to make here is that, my English skills were initially built upon a pre-existing language foundation---Korean. My communication in English was impossible without Korean playing a mediator role. When I wanted to express something in English, I first conceived a thought, then put that thought into Korean, and then translated it into English. It was extremely slow and inaccurate, as I mentioned earlier, putting thoughts into words using language inherently causes inaccuracy. Then you pass that already imperfect expression of your thought through the channel of another language, which adds even more inaccuracy.
+
+But don't worry, language learners! As I described above, I found learning a language to be a process of slowly but certainly moving away from this double-filtering process, developing the new language as an independent means of expressing your thoughts. This process is interesting: as it goes on, you start to suppress the circuit responsible for the other language you're not actively using at the moment, rather than actively relying them as a mediator. For example, now I find it difficult to text in Korean while speaking to my friends in English.
+
+The last thing I want to share here is that the language does not only function as a mere means of expressing your internal thoughts. It also works the other way around: language plays extensive role in interpreting the external world and further shapes how you think, because it becomes the semantic way you use to describe your world.
+
+It's only very recent that I started thinking, having two independent langauge worlds may not necessarily a good thing.
+I sometimes
+as some people say, "This song really reminds me a certain city. Because I listened to this song thousands times when I lived in that city." Language is the same. 
+Because my English is "way too good" now, I almost only use English-space when I live here, work and do daily communications. My Korean space is left out. I don't need it anymore.
+I sometimes miss speaking Korean. Not a mere language but the entire world.
+Sometimes I feel my Korean skills have worsened. As an ex-Korean nerd, I used to be fully-aware of such obscure Korean expressions, proverbs or short stories that I can randomly refer to at any situations.
+Becoming worse in Korean is not just about having more stuff words while uttering, but also losing an important part of my world.
+
+
+<div class="dots-divider"></div>
+
+#### Conclusion
+
+That said, I am still very interested in solidifying and extending the English-language space in my mind. I would love to learn and discover more diverse ways of describing my internal world using this language, so that my words reflect my inner world with greater resolution, and conversely, so that I can think more broadly through my extended language. I started reading books, mostly memoirs and novels, in English. I took a poetry writing class — the class full of older ladies, mostly Stanford staff members  — and hearing their poetic descriptions of the Stanford campus and the world was such an interesting experience.
+
+Lastly, *this blog.* This project is another effort. An effort with hope that I would be expressing my true heart better and staying closely connected with the people I care about.
+
+Finally, dear my fellow language learners: everybody, including native speakers, speak a different version of language. As Wittgenstein discussed, everyone plays a different language game. What we call proficiency is not necessarily about speaking like one particular native speaker with the exact same mental dictionary, tone, accent and voice.
+
+We can be proud of how we put our thoughts using our own language, because it is very unique to each of us. That's the beauty of language.
+
+
+<div class="dots-divider"></div>
+#### Acknowledgment
+
+Before I sign off, I would like to write a few more words to thank my friends back in Atlanta for being extremely open-minded and understanding.

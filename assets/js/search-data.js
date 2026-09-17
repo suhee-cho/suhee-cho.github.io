@@ -59,7 +59,12 @@ ninja.data = [{
             window.location.href = "/2024/02/02/idealism.html";
           
         },
-      },{id: "books-eleanor-oliphant-is-completely-fine",
+      },{id: "books-pachinki",
+          title: 'Pachinki',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Dorian_gray.html";
+            },},{id: "books-eleanor-oliphant-is-completely-fine",
           title: 'Eleanor Oliphant is completely fine',
           description: "",
           section: "Books",handler: () => {
@@ -79,6 +84,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/born_a_crime.html";
+            },},{id: "books-educated",
+          title: 'Educated',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/educated.html";
             },},{id: "books-why-fish-don-39-t-exist",
           title: 'Why Fish Don&amp;#39;t Exist',
           description: "",
@@ -94,11 +104,21 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/hillbilly_elegy.html";
+            },},{id: "books-know-my-name",
+          title: 'Know My Name',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/know_my_name.html";
             },},{id: "books-life-is-hard",
           title: 'Life is hard',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/life_is_hard.html";
+            },},{id: "books-pachinko",
+          title: 'Pachinko',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/pachinko.html";
             },},{id: "books-raising-hare",
           title: 'Raising Hare',
           description: "",
@@ -134,8 +154,8 @@ ninja.data = [{
           section: "News",},{id: "news-suhee-has-been-admitted-to-and-commited-to-the-psychology-phd-program-at-stanford-university",
           title: 'Suhee has been admitted to and commited to the Psychology PhD program at...',
           description: "",
-          section: "News",},{id: "news-suhee-has-been-selected-as-a-knight-hennessy-scholar-at-stanford-university-congrats",
-          title: 'Suhee has been selected as a Knight-Hennessy Scholar at Stanford University! Congrats!',
+          section: "News",},{id: "news-suhee-has-been-selected-as-a-knight-hennessy-scholar-at-stanford-university-congrats-https-knight-hennessy-stanford-edu-news-knight-hennessy-scholars-announces-2026-cohort-87-new-scholars-most-global-cohort-date",
+          title: 'Suhee has been selected as a Knight-Hennessy Scholar at Stanford University! Congrats! https://knight-hennessy.stanford.edu/news/knight-hennessy-scholars-announces-2026-cohort-87-new-scholars-most-global-cohort-date...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
